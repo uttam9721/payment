@@ -12,13 +12,16 @@ const Cart = ({cartAllProduct,setCartAllProduct}) => {
 
     const handleDecrement=(id)=>{
         setCartAllProduct((p)=>
-            p.map((item)=>item?.id===id?{...item,count:item?.count-1}:item)
+            p.map((item)=>item?.id===id && item.count>1?{...item,count:item?.count-1}:item)
             );
         };
 
     
     // const handleDecrement=()=>{};
-    const handleDeleteItem=()=>{};
+    const handleDeleteItem=(id)=>{
+        const filteredItem = cartAllProduct?.filter((item)=>item?.id !==id);
+        setCartAllProduct(filteredItem);
+    };
     
     // console.log("filteredObject",cartAllProduct);
   return (
