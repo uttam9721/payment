@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Cart from './components/Cart';
 import productList from './components/data';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import CartDetail from './components/CartDetail';
 const App = () => {
   const [productId,setProductId]=useState('');
   const [cartAllProduct,setCartAllProduct]=useState([]);
@@ -15,15 +16,13 @@ const App = () => {
       setCartAllProduct([...cartAllProduct,...filteredObject])
   },[productId])
 
-
-
-
   return (
     <>
       <BrowserRouter>
       <Header cartAllProduct={cartAllProduct}/>
       <Routes>
       <Route path='/' element={<Home setProductId={setProductId}/>}></Route>
+      <Route path='/cartdetail/:id' element={<CartDetail/>}></Route>
       <Route path='cart' element={<Cart cartAllProduct={cartAllProduct} setCartAllProduct={setCartAllProduct}/>}></Route>
       
       </Routes>
